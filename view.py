@@ -29,7 +29,7 @@ def render_block(data):
             <div class="treemap">
                 {% for item in data['children'] %}
                 <div class="application__item" style="background-color: {{get_color(item.value, item.max_value, 0.5)}}">
-                    <a class="application_item-link" href="/cmp/resources/#resources/{{item.id}}/performance">
+                    <a class="application_item-link" href="/cmp/resources/#resources/{{item.id}}/performance" target="_blank">
                         <span class="name">{{item.name}}</span>
                         <span class="stats">{{item.label}}: {{item.value}}%</span>
                         <div class="application__children">
@@ -60,7 +60,10 @@ e.globals['strip_container_name'] = strip_container_name
 def render_style():
     template_str = """
     <!-- Table of the 10 servers with most CPU -->
-    <link type="text/css" rel="stylesheet" href="/static/cmp/style/assets/css/main.css">
+    <link type="text/css" rel="stylesheet" id="stylesheet-cmp">
+    <script type="text/javascript">
+		document.getElementById("stylesheet-cmp").setAttribute("href", "/" + "static/cmp/dashboard/assets/css/main.css");
+    </script>
     <style>
         .metric_block {
             margin: 5px;
@@ -113,6 +116,14 @@ def render_style():
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+        }
+
+        body {
+			background-color: transparent;
+        }
+
+        .title {
+			color: #fff;
         }
     </style>
     """

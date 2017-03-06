@@ -60,10 +60,7 @@ e.globals['strip_container_name'] = strip_container_name
 def render_style():
     template_str = """
     <!-- Table of the 10 servers with most CPU -->
-    <link type="text/css" rel="stylesheet" id="stylesheet-cmp">
-    <script type="text/javascript">
-		document.getElementById("stylesheet-cmp").setAttribute("href", "/" + "static/cmp/dashboard/assets/css/main.css");
-    </script>
+    <link type="text/css" rel="stylesheet" href="/static/cmp/dashboard/assets/css/main.css">
     <style>
         .metric_block {
             margin: 5px;

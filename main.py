@@ -43,7 +43,7 @@ def get_data(context, app_name, resource_ids, resource_names, resource_cores, ru
             'max_value': rule['max_value'],
         }
         if point['value'] > rule['value']:
-            if rule["metric"] == "memory-usage" and re.match("cmp-[^-]+-es[1-9]", resource_names[resource_id]):
+            if rule["metric"] == "memory-usage" and re.match("cmp-[^-]+-es[1-9]", resource_names[resource_id]) or rule["metric"] == "memory-usage" and re.match("cmp-[^-]+-kafka[1-9]", resource_names[resource_id]):
                 continue
             
             child_metrics = get_metrics(context,
